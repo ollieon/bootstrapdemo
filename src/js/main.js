@@ -3,8 +3,10 @@
 // import * as bootstrap from 'bootstrap';
 import '../scss/styles.scss'
 
-import _ from 'lodash';
+import _, { sum } from 'lodash';
 import * as weather from './weather';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // function component() {
 //     const element = document.createElement('div');
@@ -211,3 +213,42 @@ function f() {
 }
 
 f();
+
+function sumRange(n) {
+    if (n === 1) {
+        return 1;
+    }
+    return (n + sumRange(n - 1));
+}
+
+console.log(sumRange(3));
+
+function power(base, exp = 0) {
+    if (exp === 0) {
+        return 1;
+    }
+    return base * power(base, exp - 1);
+}
+
+console.log(power(2, 4))
+
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(4));
+
+class Greeting extends React.Component {
+    render() {
+        return (
+            <div className="box">
+                <h2> Hello from react </h2>
+                <p> First React component.</p>
+            </div>
+        )
+    }
+}
+ReactDOM.render(<Greeting />, document.querySelector('#react-test'));
